@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "Virgl Extensions",
+  "description": "This saves the url of the jobs applied",
+  "version": "1.0",
+  "action": {
+    "default_popup": "index.html"
+  },
+  "content_scripts": [
+    {
+      "js": ["scripts/indeed.js"],
+      "matches": [
+        "https://ca.indeed.com/",
+        "https://*.indeed.com/viewjob?*",
+        "https://*.indeed.com/?*"
+      ]
+    }
+  ],
+  "host_permissions": ["https://*.indeed.com/*"],
+  "permissions": ["tabs", "storage"],
+  "background": {
+    "service_worker": "background.js"
+  }
+}
