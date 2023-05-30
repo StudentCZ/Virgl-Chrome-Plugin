@@ -8,7 +8,6 @@
     const urlParams = (new URL(location)).searchParams
     const vjk = urlParams.get('vjk')
     const jk = urlParams.get('jk')
-    const from = urlParams.get('from')
     const jobNumber = vjk ?? jk
     const url = `${baseUrl}/viewjob?jk=${jobNumber}`
 
@@ -18,21 +17,22 @@
       existingButton.remove()
     }
 
+    console.log('jobNumber', jobNumber)
     if (jobNumber === null) {
       return
     }
 
     const button = addButton('Save to My Jobs')
 
-    if (from === null) {
+    if (vjk === null) {
       button.addEventListener('click', async () => {
         saveJobInfo(url, SELECTORS.indeed)
       })
     } else {
       button.addEventListener('click', async () => {
         const iframe = document.getElementById('vjs-container-iframe')
-        const iframeDoc = iframe.contentDocument ?? iframe.contentWindow.document
-        saveJobInfo(url, SELECTORS.indeed, iframeDoc)
+        const iframeDoc = iframe?.contentDocument ?? iframe?.contentWindow?.document
+        saveJobInfo(url, SELECTORS.indeed, iframeDoc ?? document)
       })
     }
   }
@@ -46,6 +46,7 @@
         break
       case EVENTS.PAGE_UPDATE:
       default:
+        console.log('updated', req.payload)
         addButtonScript(req.payload)
     }
   })
