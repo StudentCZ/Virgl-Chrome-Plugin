@@ -7,7 +7,7 @@ export const addSaveButton = () => {
   saveAppliedJob.style.setProperty('position', 'fixed')
   saveAppliedJob.style.setProperty('right', '2rem')
   saveAppliedJob.style.setProperty('bottom', '2rem')
-  saveAppliedJob.style.setProperty('z-index', '50')
+  saveAppliedJob.style.setProperty('z-index', '1000')
   saveAppliedJob.style.setProperty('cursor', 'pointer')
 
   return saveAppliedJob

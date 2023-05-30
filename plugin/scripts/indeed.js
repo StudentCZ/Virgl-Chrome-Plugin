@@ -9,7 +9,6 @@
   const { JobBoard } = await import(chrome.runtime.getURL('scripts/utils/jobBoard.js'))
 
   const button = addSaveButton()
-
   button.addEventListener('click', async () => {
     const jobInfo = new JobBoard(url, SELECTORS.indeed)
     const response = await chrome.runtime.sendMessage(jobInfo)

@@ -10,8 +10,7 @@
     {
       "js": ["scripts/indeed.js"],
       "matches": [
-        "https://ca.indeed.com/",
-        "https://*.indeed.com/viewjob?*",
+        "https://*.indeed.com/jobs?*",
         "https://*.indeed.com/?*"
       ]
     }
