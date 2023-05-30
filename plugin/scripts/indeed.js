@@ -1,5 +1,5 @@
 (async () => {
-  const { addButton, BUTTON_ID } = await import(chrome.runtime.getURL('scripts/utils/helper.js'))
+  const { addButton } = await import(chrome.runtime.getURL('scripts/utils/helper.js'))
   const { SELECTORS, EVENTS } = await import(chrome.runtime.getURL('scripts/utils/constants.js'))
   const { sendJobInfoToExtension } = await import(chrome.runtime.getURL('scripts/utils/jobBoard.js'))
 
