@@ -1,6 +1,6 @@
 export const addSaveButton = () => {
-    const saveAppliedJob = document.createElement('button');
-    document.body.append(saveAppliedJob)
+  const saveAppliedJob = document.createElement('button')
+  document.body.append(saveAppliedJob)
 
-    saveAppliedJob.innerText = 'Save to my jobs'
+  saveAppliedJob.innerText = 'Save to my jobs'
 }

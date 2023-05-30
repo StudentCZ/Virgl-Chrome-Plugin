@@ -1,5 +1,5 @@
 // (() => {
-//     chrome.runtime.onMessage.addListener((obj, _sender, _response) => {    
+//     chrome.runtime.onMessage.addListener((obj, _sender, _response) => {
 //         const urlParams = new URLSearchParams(window.location.search);
 //         const jobNumber = urlParams.get('vjk') ?? urlParams.get('jk');
 
@@ -22,11 +22,11 @@
 //         saveButton.style.setProperty('order', '2')
 //         indeedApplyButton?.style.setProperty('order', '1');
 //         indeedSaveButton?.style.setProperty('order', '3')
-    
+
 //         // todo: the jobTitle and jobCompany doesn't seem to show up on the dashboard. Coz of React
 //         // todo: check on mutation observer (might not work?)
 //         // todo: check on intervals and timeouts
-    
+
 //         saveButton.addEventListener('click', () => {
 //             console.log('receive message from extension', obj)
 //             console.log('saving details:', {
@@ -39,8 +39,8 @@
 // })()
 
 (async () => {
-    const src = chrome.runtime.getURL('scripts/utils/helper.js');
-    const script = await import(src);
+  const src = chrome.runtime.getURL('scripts/utils/helper.js')
+  const script = await import(src)
 
-    script.addSaveButton();
+  script.addSaveButton()
 })()

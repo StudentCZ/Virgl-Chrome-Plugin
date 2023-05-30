@@ -1,9 +1,8 @@
-/* eslint-disable no-undef */
-const tabObj = {};
-const urlStatus = {
-  complete: true,
-  loading: false,
-};
+// const tabObj = {}
+// const urlStatus = {
+//   complete: true,
+//   loading: false
+// }
 
 // chrome.tabs.onActivated.addListener(async (tab) => {
 //   if (tabObj[tab.tabId] === undefined) {
