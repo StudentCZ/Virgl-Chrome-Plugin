@@ -3,6 +3,7 @@
 //         const urlParams = new URLSearchParams(window.location.search);
 //         const jobNumber = urlParams.get('vjk') ?? urlParams.get('jk');
 
+
 //         const jobTitle = document.querySelector('.jobsearch-JobInfoHeader-title')?.textContent
 //         const jobCompany = document.querySelector('.jobsearch-CompanyInfoContainer a:first-child')?.textContent
 //         const jobDescription = document.querySelector('#jobDescriptionText')?.textContent
@@ -39,8 +40,16 @@
 // })()
 
 (async () => {
-  const src = chrome.runtime.getURL('scripts/utils/helper.js')
-  const script = await import(src)
+  const {addSaveButton} = await import(chrome.runtime.getURL('scripts/utils/helper.js'))
+  const {SELECTORS} = await import(chrome.runtime.getURL('scripts/utils/constants.js'))
+  const {JobBoard} = await import(chrome.runtime.getURL('scripts/utils/jobBoard.js'))
 
-  script.addSaveButton()
+  const button = addSaveButton()
+
+  button.addEventListener('click', async () => {
+    const jobInfo = new JobBoard(SELECTORS.indeed);
+    const response = await chrome.runtime.sendMessage(jobInfo);
+    console.log('response', response);
+  })
+
 })()
