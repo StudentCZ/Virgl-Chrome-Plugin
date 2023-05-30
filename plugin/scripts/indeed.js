@@ -29,6 +29,7 @@
       })
     } else {
       button.addEventListener('click', async () => {
+        // * check if the information is within an iframe or not
         const iframe = document.getElementById('vjs-container-iframe')
         const iframeDoc = iframe?.contentDocument ?? iframe?.contentWindow?.document
         saveJobInfo(url, SELECTORS.indeed, iframeDoc ?? document)
