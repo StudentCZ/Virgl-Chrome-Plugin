@@ -6,9 +6,6 @@ const ROUTES = {
 }
 
 export const saveJobApplication = async (jobInfo) => {
-  const user = await getUser()
-  if (!user) throw new Error('Authentication failed')
-  jobInfo.userId = user.id
   return await fetch(`${BASE_URL}${ROUTES.JOB_DATA}`, {
     method: 'POST',
     headers: {

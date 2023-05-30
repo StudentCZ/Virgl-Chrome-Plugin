@@ -1,13 +1,19 @@
 export class JobBoard {
-  constructor (url, selectors) {
-    this.title = this.queryElementText(selectors.jobTitle)
-    this.companyElement = this.queryElementText(selectors.jobCompany)
-    this.description = this.queryElementText(selectors.jobDescription)
+  constructor (url, selectors, container) {
+    this.title = this.queryElementText(selectors.jobTitle, container)
+    this.companyElement = this.queryElementText(selectors.jobCompany, container)
+    this.description = this.queryElementText(selectors.jobDescription, container)
     this.site = selectors.site
     this.url = url
   }
 
-  queryElementText = (selector) => {
-    return document.querySelector(selector)?.textContent ?? null
+  queryElementText = (selector, container) => {
+    return container.querySelector(selector)?.textContent ?? null
   }
+}
+
+export const saveJobInfo = async (url, selectors, container = document) => {
+  const jobInfo = new JobBoard(url, selectors, container)
+  const response = await chrome.runtime.sendMessage(jobInfo)
+  console.log('Virgl', response)
 }

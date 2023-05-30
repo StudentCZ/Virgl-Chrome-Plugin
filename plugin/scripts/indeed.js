@@ -1,21 +1,53 @@
 (async () => {
-  const baseUrl = window.location.origin
-  const urlParams = new URLSearchParams(window.location.search)
-  const jobNumber = urlParams.get('vjk') ?? urlParams.get('jk')
-  const url = `${baseUrl}/viewjob?jk=${jobNumber}`
+  const { addButton, BUTTON_ID } = await import(chrome.runtime.getURL('scripts/utils/helper.js'))
+  const { SELECTORS, EVENTS } = await import(chrome.runtime.getURL('scripts/utils/constants.js'))
+  const { saveJobInfo } = await import(chrome.runtime.getURL('scripts/utils/jobBoard.js'))
 
-  const { addSaveButton } = await import(chrome.runtime.getURL('scripts/utils/helper.js'))
-  const { SELECTORS } = await import(chrome.runtime.getURL('scripts/utils/constants.js'))
-  const { JobBoard } = await import(chrome.runtime.getURL('scripts/utils/jobBoard.js'))
+  const addButtonScript = (location) => {
+    const baseUrl = window.location.origin
+    const urlParams = (new URL(location)).searchParams
+    const vjk = urlParams.get('vjk')
+    const jk = urlParams.get('jk')
+    const from = urlParams.get('from')
+    const jobNumber = vjk ?? jk
+    const url = `${baseUrl}/viewjob?jk=${jobNumber}`
 
-  const button = addSaveButton()
-  button.addEventListener('click', async () => {
-    const jobInfo = new JobBoard(url, SELECTORS.indeed)
-    const response = await chrome.runtime.sendMessage(jobInfo)
-    console.log('Virgl', response)
-  })
+    const existingButton = document.getElementById(BUTTON_ID)
 
-  chrome.runtime.onMessage.addListener((req, sender, sendResponse) => {
-    console.log('Virgl', req)
+    if (existingButton) {
+      existingButton.remove()
+    }
+
+    if (jobNumber === null) {
+      return
+    }
+
+    const button = addButton('Save to My Jobs')
+
+    if (from === null) {
+      button.addEventListener('click', async () => {
+        saveJobInfo(url, SELECTORS.indeed)
+      })
+    } else {
+      button.addEventListener('click', async () => {
+        const iframe = document.getElementById('vjs-container-iframe')
+        const iframeDoc = iframe.contentDocument ?? iframe.contentWindow.document
+        saveJobInfo(url, SELECTORS.indeed, iframeDoc)
+      })
+    }
+  }
+
+  addButtonScript(window.location.href)
+
+  chrome.runtime.onMessage.addListener((req, _sender, _sendResponse) => {
+    switch (req.event) {
+      case EVENTS.SAVE_JOB:
+        console.log('Virgl', req.payload)
+        break
+      case EVENTS.PAGE_UPDATE:
+      default:
+        console.log('Virgl', req.payload)
+        addButtonScript(req.payload)
+    }
   })
 })()

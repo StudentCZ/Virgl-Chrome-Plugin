@@ -6,3 +6,8 @@ export const SELECTORS = {
     jobDescription: '#jobDescriptionText'
   }
 }
+
+export const EVENTS = {
+  PAGE_UPDATE: 0,
+  SAVE_JOB: 1
+}
