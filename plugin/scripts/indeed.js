@@ -17,7 +17,6 @@
       existingButton.remove()
     }
 
-    console.log('jobNumber', jobNumber)
     if (jobNumber === null) {
       return
     }
@@ -45,9 +44,11 @@
         console.log('Virgl', req.payload)
         break
       case EVENTS.PAGE_UPDATE:
-      default:
-        console.log('updated', req.payload)
+        console.log('Virgl Updated', req.payload)
         addButtonScript(req.payload)
+        break
+      default:
+        console.log('default', req)
     }
   })
 })()
