@@ -12,7 +12,7 @@ export class JobBoard {
   }
 }
 
-export const saveJobInfo = async (url, selectors, container = document) => {
+export const sendJobInfoToExtension = async (url, selectors, container = document) => {
   const jobInfo = new JobBoard(url, selectors, container)
   const response = await chrome.runtime.sendMessage(jobInfo)
   console.log('Virgl', response)
