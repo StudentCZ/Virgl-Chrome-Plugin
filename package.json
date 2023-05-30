@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "db": "json-server --watch modeDb/db.json --port 3008",
+    "db": "json-server --watch mockDb/db.json --port 3008",
     "lint": "eslint --fix plugin/ "
   },
   "keywords": [],

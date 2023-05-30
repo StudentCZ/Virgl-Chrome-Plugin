@@ -12,6 +12,10 @@
   button.addEventListener('click', async () => {
     const jobInfo = new JobBoard(url, SELECTORS.indeed)
     const response = await chrome.runtime.sendMessage(jobInfo)
-    console.log('response', response)
+    console.log('Virgl', response)
+  })
+
+  chrome.runtime.onMessage.addListener((req, sender, sendResponse) => {
+    console.log('Virgl', req)
   })
 })()
