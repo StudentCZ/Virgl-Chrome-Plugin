@@ -6,7 +6,7 @@ chrome.runtime.onMessage.addListener(async (req, sender, sendResponse) => {
   try {
     await saveJobApplication(req)
     await chrome.tabs.sendMessage(sender.tab.id, 'Job info saved')
-  } catch  {
+  } catch {
     await chrome.tabs.sendMessage(sender.tab.id, 'Job info failed to save')
   }
 })
