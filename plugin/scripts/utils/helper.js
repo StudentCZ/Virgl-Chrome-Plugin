@@ -6,7 +6,7 @@ export const addButton = (label) => {
   if (existingButton) {
     existingButton.remove()
   }
-  
+
   const saveAppliedJob = document.createElement('button')
   document.body.append(saveAppliedJob)
 
