@@ -2,8 +2,6 @@ import { EVENTS } from './utils/constants.js'
 import { saveJobApplication, getUser } from './utils/queries.js'
 
 (async () => {
-  // todo: issues on first load not showing up
-
   chrome.runtime.onMessage.addListener(async (req, sender, sendResponse) => {
     sendResponse('Saving job info')
     try {

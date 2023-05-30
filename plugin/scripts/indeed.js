@@ -46,7 +46,6 @@
         break
       case EVENTS.PAGE_UPDATE:
       default:
-        console.log('Virgl', req.payload)
         addButtonScript(req.payload)
     }
   })
