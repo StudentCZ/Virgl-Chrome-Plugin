@@ -11,6 +11,7 @@
       "js": ["scripts/indeed.js"],
       "matches": [
         "https://*.indeed.com/jobs?*",
+        "https://*.indeed.com/viewjob?*",
         "https://*.indeed.com/?*"
       ]
     }
