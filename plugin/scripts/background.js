@@ -48,6 +48,6 @@
 
 chrome.runtime.onMessage.addListener((req, sender, sendResponse) => {
   console.log('sender', sender.tab)
-  console.log('request', req);
+  console.log('request', req)
   sendResponse('Data received')
 })
