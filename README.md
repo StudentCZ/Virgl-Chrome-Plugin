@@ -18,7 +18,7 @@ You can follow the basic instructions [here](https://developer.chrome.com/docs/e
 npm i
 ```
 
-2. Run json-server for the database. This will run the server on default `http://localhost:3000`. You can use this to fetch data.
+2. Run json-server for the database. This will run the server on `http://localhost:3008`. You can use this to fetch mock data.
 
 ```
 npm run db
