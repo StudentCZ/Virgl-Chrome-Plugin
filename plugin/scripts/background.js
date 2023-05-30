@@ -1,4 +1,4 @@
-import { EVENTS } from './utils/constants.js'
+import { EVENTS } from './utils/helper.js'
 import { saveJobApplication, getUser } from './utils/queries.js'
 
 (async () => {

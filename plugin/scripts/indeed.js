@@ -1,6 +1,6 @@
 (async () => {
-  const { addButton } = await import(chrome.runtime.getURL('scripts/utils/helper.js'))
-  const { SELECTORS, EVENTS } = await import(chrome.runtime.getURL('scripts/utils/constants.js'))
+  const { addButton, chromeOnMessageListener } = await import(chrome.runtime.getURL('scripts/utils/helper.js'))
+  const { SELECTORS } = await import(chrome.runtime.getURL('scripts/utils/constants.js'))
   const { sendJobInfoToExtension } = await import(chrome.runtime.getURL('scripts/utils/jobBoard.js'))
 
   const addButtonScript = (location) => {
@@ -33,17 +33,5 @@
 
   addButtonScript(window.location.href)
 
-  chrome.runtime.onMessage.addListener((req, _sender, _sendResponse) => {
-    switch (req.event) {
-      case EVENTS.SAVE_JOB:
-        console.log('Virgl', req.payload)
-        break
-      case EVENTS.PAGE_UPDATE:
-        console.log('Virgl Updated', req.payload)
-        addButtonScript(req.payload)
-        break
-      default:
-        console.log('default', req)
-    }
-  })
+  chromeOnMessageListener(addButtonScript)
 })()
