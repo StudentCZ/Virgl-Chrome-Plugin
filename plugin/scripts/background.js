@@ -22,6 +22,5 @@ import { saveJobApplication, getUser } from './utils/queries.js'
     if (tab.url && tab.url !== 'https://ca.indeed.com/?from=gnav-homepage') {
       chrome.tabs.sendMessage(tabId, { event: EVENTS.PAGE_UPDATE, payload: tab.url })
     }
-
   })
 })()

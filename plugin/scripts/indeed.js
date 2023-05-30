@@ -11,12 +11,6 @@
     const jobNumber = vjk ?? jk
     const url = `${baseUrl}/viewjob?jk=${jobNumber}`
 
-    const existingButton = document.getElementById(BUTTON_ID)
-
-    if (existingButton) {
-      existingButton.remove()
-    }
-
     if (jobNumber === null) {
       return
     }

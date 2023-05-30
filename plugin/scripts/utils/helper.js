@@ -1,6 +1,12 @@
 export const BUTTON_ID = 'virgl-save-job-button'
 
 export const addButton = (label) => {
+  const existingButton = document.getElementById(BUTTON_ID)
+
+  if (existingButton) {
+    existingButton.remove()
+  }
+  
   const saveAppliedJob = document.createElement('button')
   document.body.append(saveAppliedJob)
 
