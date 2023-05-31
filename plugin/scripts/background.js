@@ -3,6 +3,7 @@ import { saveJobApplication, getUser } from './utils/queries.js'
 
 (async () => {
   chrome.runtime.onMessage.addListener(async (req, sender, sendResponse) => {
+    // todo: probably can have event names as well
     sendResponse('Saving job info')
     try {
       // todo: token from localstorage will be sent to saveJobApplication

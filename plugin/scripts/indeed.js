@@ -15,7 +15,7 @@
       return
     }
 
-    const button = addButton('Save to My Jobs')
+    const button = addButton()
 
     if (vjk === null) {
       button.addEventListener('click', async () => {

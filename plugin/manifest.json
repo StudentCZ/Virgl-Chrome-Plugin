@@ -12,6 +12,12 @@
       "matches": [
         "https://*.indeed.com/*"
       ]
+    },
+    {
+      "js": ["scripts/linkedin.js"],
+      "matches": [
+        "https://*.linkedin.com/*"
+      ]
     }
   ],
   "web_accessible_resources": [{

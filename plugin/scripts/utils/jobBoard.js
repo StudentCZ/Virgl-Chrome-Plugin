@@ -8,7 +8,7 @@ export class JobBoard {
   }
 
   queryElementText = (selector, container) => {
-    return container.querySelector(selector)?.textContent ?? null
+    return container.querySelector(selector)?.innerText ?? null
   }
 }
 
