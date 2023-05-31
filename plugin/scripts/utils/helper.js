@@ -6,12 +6,6 @@ export const EVENTS = {
 }
 
 export const addButton = (label = 'Save to My Jobs') => {
-  const existingButton = document.getElementById(BUTTON_ID)
-
-  if (existingButton) {
-    existingButton.remove()
-  }
-
   const saveAppliedJob = document.createElement('button')
   document.body.append(saveAppliedJob)
 
@@ -21,8 +15,8 @@ export const addButton = (label = 'Save to My Jobs') => {
   saveAppliedJob.style.setProperty('position', 'fixed')
   saveAppliedJob.style.setProperty('left', '2rem')
   saveAppliedJob.style.setProperty('bottom', '2rem')
-  saveAppliedJob.style.setProperty('padding', '2rem')
-  saveAppliedJob.style.setProperty('z-index', '1000')
+  saveAppliedJob.style.setProperty('padding', '1rem')
+  saveAppliedJob.style.setProperty('z-index', '99999')
   saveAppliedJob.style.setProperty('cursor', 'pointer')
   saveAppliedJob.style.setProperty('background-color', 'blue')
   saveAppliedJob.style.setProperty('color', 'white')

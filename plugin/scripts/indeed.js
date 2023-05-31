@@ -1,5 +1,5 @@
 (async () => {
-  const { addButton, chromeOnMessageListener } = await import(chrome.runtime.getURL('scripts/utils/helper.js'))
+  const { addButton, chromeOnMessageListener, BUTTON_ID } = await import(chrome.runtime.getURL('scripts/utils/helper.js'))
   const { SELECTORS } = await import(chrome.runtime.getURL('scripts/utils/constants.js'))
   const { sendJobInfoToExtension } = await import(chrome.runtime.getURL('scripts/utils/jobBoard.js'))
 
@@ -10,6 +10,12 @@
     const jk = urlParams.get('jk')
     const jobNumber = vjk ?? jk
     const url = `${baseUrl}/viewjob?jk=${jobNumber}`
+
+    const existingButton = document.getElementById(BUTTON_ID)
+
+    if (existingButton) {
+      existingButton.remove()
+    }
 
     if (jobNumber === null) {
       return

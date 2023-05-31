@@ -5,17 +5,17 @@
 
   const getCurrentJobIdFromUrl = (location) => {
     const locationUrl = new URL(location)
-    const urlParams = locationUrl.searchParams
-    const fromParams = urlParams.get('currentJobId')
-    const pathPattern = /(?<=(\/jobs\/view\/))\w+/
+    const pathPattern = /(?<=(\/jobs\/))\w+/
     const fromPathName = pathPattern.exec(locationUrl.pathname)?.[0]
-    return fromParams ?? fromPathName
+    return fromPathName
   }
 
   const addButtonScript = (location) => {
+    console.log({ location })
     const baseUrl = window.location.origin
     const currentJobId = getCurrentJobIdFromUrl(location)
-    const url = `${baseUrl}/jobs/view/${currentJobId}`
+    console.log(currentJobId)
+    const url = `${baseUrl}/jobs/${currentJobId}`
 
     const existingButton = document.getElementById(BUTTON_ID)
 
@@ -30,10 +30,11 @@
     const button = addButton()
 
     button.addEventListener('click', async () => {
-      sendJobInfoToExtension(url, SELECTORS.linkedin)
+      sendJobInfoToExtension(url, SELECTORS.otta)
     })
   }
-
+  
+  console.log({location: window.location.href})
   addButtonScript(window.location.href)
 
   chromeOnMessageListener(addButtonScript)

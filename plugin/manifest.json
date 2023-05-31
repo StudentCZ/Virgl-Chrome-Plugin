@@ -18,6 +18,12 @@
       "matches": [
         "https://*.linkedin.com/*"
       ]
+    },
+    {
+      "js": ["scripts/otta.js"],
+      "matches": [
+        "https://*.otta.com/*"
+      ]
     }
   ],
   "web_accessible_resources": [{
