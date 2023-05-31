@@ -11,7 +11,6 @@
   }
 
   const addButtonScript = (location) => {
-    console.log({ location })
     const baseUrl = window.location.origin
     const currentJobId = getCurrentJobIdFromUrl(location)
     console.log(currentJobId)
@@ -33,8 +32,7 @@
       sendJobInfoToExtension(url, SELECTORS.otta)
     })
   }
-  
-  console.log({location: window.location.href})
+
   addButtonScript(window.location.href)
 
   chromeOnMessageListener(addButtonScript)

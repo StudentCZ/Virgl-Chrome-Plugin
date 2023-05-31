@@ -18,9 +18,9 @@ import { saveJobApplication, getUser } from './utils/queries.js'
   })
 
   chrome.tabs.onUpdated.addListener(async (tabId, tab) => {
-    // ? issue when going to https://ca.indeed.com/?from=gnav-homepage
+    // ? issue when going to url that's not matching with any sites
     // ? not sure why it's giving out error message on sendMessage
-    if (tab.url && tab.url !== 'https://ca.indeed.com/?from=gnav-homepage') {
+    if (tab.url) {
       chrome.tabs.sendMessage(tabId, { event: EVENTS.PAGE_UPDATE, payload: tab.url })
     }
   })
